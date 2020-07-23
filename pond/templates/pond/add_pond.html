@@ -1,0 +1,33 @@
+{% extends "pond/base.html" %}
+{% load static %}
+
+{% block title %}
+	Add Pond | Pondify
+{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'pond/add_pond.css' %}">	
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<a href="{% url 'index' %}">
+			<i class="fa fa-home fa-4x"></i>
+			<h4> Home </h4>
+		</a>
+	</div>
+	<div class="container">
+		<h1 class="head_title"> Add Pond </h1>
+	</div>
+	<div class="form-group container">
+		<form method="POST">
+			<div class="col-md-8">
+				<label>Pond Name</label>
+				<input type="text" name="pond_name" class="pond_name" required>
+				<button class="button">Connect Temp Sensor</button>
+				<button class="button">Connect pH Sensor</button>
+				<button class="button">Connect Water Level Sensor</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}

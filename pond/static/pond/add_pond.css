@@ -1,0 +1,21 @@
+.head_title {
+	font-size: 100px;
+}
+label {
+	font-size: 40px;
+}
+.pond_name {
+	padding: 20px;
+	border-radius: 5px;
+	width: 100%;
+}
+.button {
+	background-color: #13619A;
+	color: white;
+	margin-top: 20px;
+	width: 100%;
+	padding: 10px 10px;
+	border: 2px solid #13619A;
+	border-radius: 5px;
+	font-size: 30px;
+}

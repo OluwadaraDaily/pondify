@@ -1,0 +1,1 @@
+web: gunicorn pondify.wsgi --log-file -

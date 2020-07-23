@@ -1,0 +1,50 @@
+{% extends "pond/base.html" %}
+{% load static %}
+
+{% block title %}
+	Register| Pondify
+{% endblock %}
+
+{% block head %}
+	<style type="text/css">
+		input[type="submit"]{
+			margin-left: 1%;
+		}	
+	</style>
+	{# <link rel="stylesheet" type="text/css" href="{% static 'pond/index.css' %}">	 #}
+{% endblock %}
+
+{% block body %}
+	<h1> Register </h1>
+	<a href="{% url 'login' %}"> Go to Login Page </a>
+	<div class="col-md-6">
+		<form method="POST">
+			{% csrf_token %}
+			<div>
+				<label> First Name </label>
+				<input type="text" name="first_name" required class="form-control">
+			</div>
+
+			<div>
+				<label> Last Name </label>
+				<input type="text" name="last_name" required class="form-control">
+			</div>
+			
+			<div>
+				<label> Email </label>
+				<input type="email" name="email" required class="form-control">
+			</div> <hr>
+
+			<div>
+				<label> Username </label>
+				<input type="text" name="username" required class="form-control">
+			</div>
+
+			<div>
+				<label> Password </label>
+				<input type="password" name="password" required class="form-control">
+			</div>
+		</div> <br>
+		<input type="submit" value="Register" class="btn btn-success">
+	</form>
+{% endblock %}

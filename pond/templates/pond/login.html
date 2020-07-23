@@ -1,0 +1,45 @@
+{% extends "pond/base.html" %}
+{% load static %}
+
+{% block title %}
+	Login | Pondify
+{% endblock %}
+
+{% block head %}
+	<style type="text/css">
+		a {
+			color: white;
+		}
+		a:hover {
+			color: white;
+		}
+		input[type="submit"], button{
+			margin-left: 1%;
+		}	
+	</style>
+	{# <link rel="stylesheet" type="text/css" href="{% static 'pond/index.css' %}">	 #}
+{% endblock %}
+
+{% block body %}
+	<h1> Login </h1>
+
+	<div class="col-md-6">
+		<form method="POST">
+			{% csrf_token %}
+			<div>
+				<label> Username </label>
+				<input type="text" name="username" required class="form-control">
+			</div>
+
+			<div>
+				<label> Password </label>
+				<input type="password" name="password" required class="form-control">
+			</div>
+		</div> <br>
+		<input type="submit" value="Login" class="btn btn-success">
+	</form> <br> <br>
+	<p>If you do not have an account</p>
+	<button class="btn btn-primary">
+		<a href="{% url 'register' %}"> Register Here </a>
+	</button>
+{% endblock %}

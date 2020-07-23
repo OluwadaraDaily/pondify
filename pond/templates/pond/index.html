@@ -1,0 +1,42 @@
+{% extends "pond/base.html" %}
+{% load static %}
+
+{% block title %}
+	Home | Pondify
+{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'pond/index.css' %}">	
+{% endblock %}
+
+{% block body %}
+	<header>
+		<img src="{% static 'pond/img/logo.png' %}" class="logo" height="50">
+		<nav>
+			<ul class="nav-area">
+				<li><a href="{% url 'index' %}"> Home </a></li>
+				<li><a href="#"> About </a></li>
+				<li><a href="{% url 'logout' %}"> Logout </a></li>
+			</ul>	
+		</nav>
+		<!-- <a class="user-profile" href="#"><i class="fa fa-user-circle"></i> {{ user }}</a> -->
+	</header>	
+	
+	<div class="container">
+		<h1> Welcome, {{ user }} </h1>
+		<a href="{% url 'add_pond' %}"> <i class="fa fa-plus"></i> Add Pond </a>
+	</div>
+	<div class="cards container">
+		{% if ponds|length > 0 %}
+			{% for pond in ponds %}
+				<a href="{% url 'each_pond' pond.channel_id %}">
+					<div class="card"> {{ pond.pond_name }} </div>
+				</a>
+			{% endfor %}
+		{% else %}
+		<div class="no-ponds">
+			<h1> No Ponds Connected Yet. Contact the Admin! </h1>
+		</div>
+		{% endif %}
+	</div>
+{% endblock %}
