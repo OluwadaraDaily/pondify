@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-from .models import *
+from .models import Pond
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.conf import settings
 from django.shortcuts import render, redirect
@@ -60,11 +60,38 @@ def index(request):
 	return render(request, "pond/index.html", context)
 
 
-# @login_required(login_url='/login')
 def add_pond(request):
+	if request.method == "POST":
+		#get data from the front end
+		pond_name = request.POST["pond_name"]
+		channel_id = request.POST["channel_id"]
+		owner = request.user
+		
+		#Create instance
+		single_pond = Pond.objects.create(owner = owner, pond_name = pond_name, channel_id = channel_id)
+		
+		#check DB for similar entries
+		check = Pond.check_pond(single_pond)
+		
+		if (check):
+			
+			ponds = Pond.objects.filter(owner = request.user)
+			
+			context = {
+				"pond": single_pond,
+				"message": "Pond added successfully"
+			}
+
+			return render(request, "pond/success.html", context)
+		
+		else:
+			context = {
+				"message": "Channel or Pond name already exists. Try again!"
+			}
+			return render(request, "pond/error.html", context)
+	
 	return render(request, "pond/add_pond.html")
 
-# @login_required(login_url='/login')
 def each_pond(request, pond_id):
 	response = requests.get(f"https://api.thingspeak.com/channels/{pond_id}/feeds.json",
 		params={"api_key": "61KHV0MWBSNBE4G2", "results": "1"}).json()
@@ -74,6 +101,9 @@ def each_pond(request, pond_id):
 	}
 
 	return render(request, "pond/each_pond.html", context)
+
+def about(request):
+	return render(request, "pond/about.html")
 
 def signout(request):
 	auth_logout(request)

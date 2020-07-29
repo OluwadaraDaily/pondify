@@ -1,0 +1,27 @@
+{% extends "pond/base.html" %}
+{% load static %}
+
+{% block title %}
+	About | Pondify
+{% endblock %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{% static 'pond/about.css' %}">
+{% endblock %}
+
+{% block body %}
+	
+	<div class="container">
+		<h1 class="display-3 head_title"> About Pondify </h1>
+		<p class="lead">
+			Pondify is a final project of OLOYE OLUWADARA AYOMIDE and ABIOLA ADEOLA AMOS
+			of the department of Electrical and Information Engineering, Covenant University, Otta, Nigeria. <br> <br>
+
+			This project aims to make remote monitoring of fish pond possible by integrating Hardware sensors with software application. <br> <br>
+
+			This project employed the use of sensors, a microcontroller, a cloud platform, various web technologies (HTML, CSS, Django, SQLite) and API to make the implementation possible. <br> <br>
+
+			This project was supervised by PROF. FRANCIS IDACHABA. 
+		</p>
+	</div>
+{% endblock %}

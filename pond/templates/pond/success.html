@@ -1,0 +1,41 @@
+{% extends "pond/base.html" %}
+{% load static %}
+
+{% block title %}
+	Success | Pondify
+{% endblock %}
+
+{% block head %}
+	<style type="text/css">
+		a {
+			background-color: #13619A;
+			color: white;;
+			border-radius: 3px;
+			padding: 6px;
+		}
+		a:hover{
+			color: white;
+			text-decoration: underline;
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="display-1"> Success </h1>
+		<h3> {{ message }} </h3>
+		<h3> DETAILS </h3>
+		
+		<p> Pond Name: {{ pond.pond_name }} </p>
+		<p> Channel ID: {{ pond.channel_id }} </p>
+		<p> Owner: {{ pond.owner.username }} </p>
+		<hr><hr>
+		
+		<a href="{% url 'index' %}"> GO BACK HOME </a>	
+	</div>
+	<!-- <ul>
+		{% for pond in ponds %}
+			<li>{{ pond.pond_name }}</li>
+		{% endfor %}
+	</ul> -->	
+{% endblock %}

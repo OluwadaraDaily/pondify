@@ -10,18 +10,7 @@
 {% endblock %}
 
 {% block body %}
-	<header>
-		<img src="{% static 'pond/img/logo.png' %}" class="logo" height="50">
-		<nav>
-			<ul class="nav-area">
-				<li><a href="{% url 'index' %}"> Home </a></li>
-				<li><a href="#"> About </a></li>
-				<li><a href="{% url 'logout' %}"> Logout </a></li>
-			</ul>	
-		</nav>
-		<!-- <a class="user-profile" href="#"><i class="fa fa-user-circle"></i> {{ user }}</a> -->
-	</header>	
-	
+
 	<div class="container">
 		<h1> Welcome, {{ user }} </h1>
 		<a href="{% url 'add_pond' %}"> <i class="fa fa-plus"></i> Add Pond </a>

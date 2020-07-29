@@ -25,7 +25,7 @@ SECRET_KEY = '%+%ofhcp0ja3%cml-4qk&byh!q29l)vod0f3#t#tlcne-cnz)x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pondify.herokuapp.com']
+ALLOWED_HOSTS = ['pondify.herokuapp.com', '127.0.0.1']
 
 
 # Application definition

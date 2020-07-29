@@ -10,8 +10,16 @@ class Pond(models.Model):
 	pond_name = models.CharField(max_length = 64)
 	channel_id = models.IntegerField(default = "0000000")
 
+	def check_pond(self):
+		ponds = Pond.objects.all()
+		
+		for pond in ponds:
+			if((self.pond_name == pond.pond_name) or (self.channel_id == pond.channel_id)):
+				return False
+	
 	def is_valid_pond(self):
 		return (self.owner.len() > 0) and (self.pond_name.len() > 0) and (self.channel_id.len() > 0)
+	
 	
 	def __str__(self):
 		return f"{self.pond_name} | ID:{self.channel_id} | Owner: {self.owner.username}"

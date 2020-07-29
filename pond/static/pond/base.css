@@ -6,3 +6,46 @@ body{
 a {
 	color: #13619A;
 }
+
+#footer {
+	position: fixed;
+   	left: 0;
+   	bottom: 0;
+   	width: 100%;
+   	background-color: #13619A !important;
+   	color: #ffffff;
+   	text-align: center;
+}
+
+header {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   padding: 20px 70px;
+}	
+
+.nav-area {
+   list-style: none;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+.nav-area li {
+   display: inline-block;
+   padding: 0 15px;
+   text-transform: uppercase;
+}
+
+.nav-area li a {
+   padding: 3px;
+   border-radius: 2px;
+   text-decoration: none;
+   /*font-size: 40px;*/
+}
+.nav-area li a:hover {
+   background-color: #13619A;
+   color: white;
+   cursor: pointer;
+}
