@@ -22,6 +22,22 @@
 
 {% block body %}
 	<h1> Login </h1>
+	
+	{% if messages %}
+		<div class="col-md-6">
+			{% for message in messages %}
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+					<div class="alert alert-danger">
+						{{ message }}					
+					</div>
+					{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
 
 	<div class="col-md-6">
 		<form method="POST">
@@ -38,7 +54,7 @@
 		</div> <br>
 		<input type="submit" value="Login" class="btn btn-success">
 	</form> <br> <br>
-	<p>If you do not have an account</p>
+	<p>DON'T HAVE AN ACCOUNT?</p>
 	<button class="btn btn-primary">
 		<a href="{% url 'register' %}"> Register Here </a>
 	</button>

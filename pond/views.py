@@ -1,6 +1,7 @@
 from django.http import HttpResponse, Http404
 from .models import Pond
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
+from django.contrib import messages
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
@@ -11,20 +12,32 @@ import json
 # Create your views here.
 
 def register(request):
+	# When form is submitted
 	if request.method == "POST":
 		first_name = request.POST["first_name"]
 		last_name = request.POST["last_name"]
 		email = request.POST["email"]
 		username = request.POST["username"]
 		password = request.POST["password"]
-		
-		User.objects.create_user(first_name = first_name, last_name = last_name, 
+
+		user = authenticate(request, username = username, password = password)
+
+		# Check if the user does not exist. If not, go ahead to the login page
+		if user is None:
+			User.objects.create_user(first_name = first_name, last_name = last_name, 
 			email = email, username = username, password = password)
 	
-		context = {
-			'first_name': first_name
-		}
-		return redirect("/login")
+			context = {
+				'first_name': first_name
+			}
+			message = "Congratulations. Registration Successful! You can now Login!"
+			messages.add_message(request, messages.SUCCESS, message)
+			return redirect("/login")
+		# If user exists already, return back to the Registration page
+		else:
+			message = "Registration was not successful! Try different parameters!"
+			messages.add_message(request, messages.ERROR, message)
+			return redirect("/register")
 
 	return render(request, "pond/register.html")
 
@@ -42,6 +55,8 @@ def signin(request):
 			auth_login(request, user)
 			return redirect("/", context)
 		else:
+			message = "Invalid Login Parameters! Try Again!"
+			messages.add_message(request, messages.ERROR, message)
 			return redirect("/login")
 
 	return render(request, "pond/login.html")

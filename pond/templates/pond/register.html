@@ -16,6 +16,23 @@
 
 {% block body %}
 	<h1> Register </h1>
+	
+	{% if messages %}
+		<div class="col-md-6">
+			{% for message in messages %}
+				{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+					<div class="alert alert-danger">
+						{{ message }}					
+					</div>
+					{% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+						<div class="alert alert-success">
+							{{ message }}
+						</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	{% endif %}
+
 	<a href="{% url 'login' %}"> Go to Login Page </a>
 	<div class="col-md-6">
 		<form method="POST">

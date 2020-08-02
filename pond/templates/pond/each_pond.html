@@ -6,30 +6,34 @@
 {% endblock %}
 
 {% block head %}
-	<link rel="stylesheet" type="text/css" href="{% static 'pond/each_pond.css' %}">	
+	<link rel="stylesheet" type="text/css" href="{% static 'pond/each_pond.css' %}">
+	<script type="text/javascript" src="{% static 'pond/js/each_pond.js' %}"></script>
+	<meta http-equiv="refresh" content="45"/>
 {% endblock %}
 
 {% block body %}
+	
+	<button id="refresh"> Refresh </button>
 	
 	<div class="container">
 		<h1 class="display-2 head_title"> {{ response.channel.name }} </h1>
 	</div>
 	<div class="category">
 		<h3> Temperature </h3>
-		<input type="text" name="" readonly value="{{ response.feeds.0.field1 }}">
+		<input type="text" id="temp" readonly value="{{ response.feeds.0.field1 }}">
 	</div>
 	<div class="category">
 		<h3> pH Level </h3>
-		<input type="text" name="" readonly value="{{ response.feeds.0.field2 }}">
+		<input type="text" id="ph" readonly value="{{ response.feeds.0.field2 }}">
 	</div>
 	<div class="category">
 		<h3> Water Level </h3>
 		
-		{% if pond.water_level %}
-			<input type="text" name="" readonly value="Good">
+		{% if response.feeds.0.field4 != 0 %}
+			<input type="text" id="water_level" readonly value="Good">
 		
 		{% else %}
-			<input type="text" name="" readonly value="Not Good">
+			<input type="text" id="water_level" readonly value="Not Good">
 		{% endif %}
 
 	</div>
