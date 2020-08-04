@@ -10,12 +10,15 @@ class Pond(models.Model):
 	pond_name = models.CharField(max_length = 64)
 	channel_id = models.IntegerField(default = "0000000")
 
-	def check_pond(self):
+	def check_pond(name, channel):
 		ponds = Pond.objects.all()
-		
+
 		for pond in ponds:
-			if((self.pond_name == pond.pond_name) or (self.channel_id == pond.channel_id)):
+			if((name == pond.pond_name) or (channel == pond.channel_id)):
 				return False
+			else:
+				return True
+
 	
 	def is_valid_pond(self):
 		return (self.owner.len() > 0) and (self.pond_name.len() > 0) and (self.channel_id.len() > 0)

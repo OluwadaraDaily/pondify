@@ -82,15 +82,13 @@ def add_pond(request):
 		channel_id = request.POST["channel_id"]
 		owner = request.user
 		
-		#Create instance
-		single_pond = Pond.objects.create(owner = owner, pond_name = pond_name, channel_id = channel_id)
-		
 		#check DB for similar entries
-		check = Pond.check_pond(single_pond)
+		check = Pond.check_pond(pond_name, channel_id)
 		
 		if (check):
-			
-			ponds = Pond.objects.filter(owner = request.user)
+		
+			single_pond = Pond.objects.create(owner = owner, pond_name = pond_name, channel_id = channel_id)	
+		
 			
 			context = {
 				"pond": single_pond,
