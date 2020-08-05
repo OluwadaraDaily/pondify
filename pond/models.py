@@ -12,13 +12,16 @@ class Pond(models.Model):
 
 	def check_pond(name, channel):
 		ponds = Pond.objects.all()
-
+		count = 0
+		
 		for pond in ponds:
 			if((name == pond.pond_name) or (channel == pond.channel_id)):
-				return False
-			else:
-				return True
+				count +=1
 
+		if (count > 0):
+			return False
+		else:
+			return True
 	
 	def is_valid_pond(self):
 		return (self.owner.len() > 0) and (self.pond_name.len() > 0) and (self.channel_id.len() > 0)
