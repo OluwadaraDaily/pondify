@@ -115,6 +115,12 @@ def each_pond(request, pond_id):
 
 	return render(request, "pond/each_pond.html", context)
 
+def delete_pond(request, pond_id):
+	pond = Pond.objects.get(id = pond_id)
+	pond.delete()
+
+	return redirect("/")
+
 def about(request):
 	return render(request, "pond/about.html")
 

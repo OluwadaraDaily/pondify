@@ -21,6 +21,11 @@
 				<a href="{% url 'each_pond' pond.channel_id %}">
 					<div class="card"> {{ pond.pond_name }} </div>
 				</a>
+
+				<a href="{% url 'delete_pond' pond.id %}">
+					<button class="btn btn-danger"> Delete Pond </button>
+				</a>
+			
 			{% endfor %}
 		{% else %}
 		<div class="no-ponds">

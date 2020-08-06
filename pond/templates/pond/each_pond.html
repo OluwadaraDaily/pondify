@@ -30,10 +30,10 @@
 		<h3> Water Level </h3>
 		
 		{% if response.feeds.0.field4 != 0 %}
-			<input type="text" id="water_level" readonly value="Good">
+			<input type="text" id="water_level" readonly value="Full">
 		
 		{% else %}
-			<input type="text" id="water_level" readonly value="Not Good">
+			<input type="text" id="water_level" readonly value="Empty">
 		{% endif %}
 
 	</div>
