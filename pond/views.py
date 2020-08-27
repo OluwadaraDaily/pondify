@@ -107,10 +107,11 @@ def add_pond(request):
 
 def each_pond(request, pond_id):
 	response = requests.get(f"https://api.thingspeak.com/channels/{pond_id}/feeds.json",
-		params={"api_key": "S112BNEHEH61LSO1", "results": "1"}).json()
+		params={"api_key": "Z7POUDWMQBPRKQU1", "results": "1"}).json()
 
 	context = {
-		'response': response
+		'response': response,
+		'pond_id': pond_id
 	}
 
 	return render(request, "pond/each_pond.html", context)
