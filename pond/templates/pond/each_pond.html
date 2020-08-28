@@ -30,14 +30,10 @@
 	</div>
 	<div class="category">
 		<h3> Water Level </h3>
-		<h1>{{ response.feeds.0.field4 }}</h1>
-		{% if response.feeds.0.field4 == 1 %}
-			<input type="text" id="water_level" readonly value="Empty">
-			
-		{% else %}
-			<input type="text" id="water_level" readonly value="Full">
-		{% endif %}
-
+		<input type="text" id="water_level" readonly value="{{ response.feeds.0.field4 }}">
 	</div>
+	<h2>NB:</h2><br>
+	<h4>Water Level: 0 = Full</h4> <br>
+	<h4>Water Level: 1 = Empty</h4>
 	
 {% endblock %}
