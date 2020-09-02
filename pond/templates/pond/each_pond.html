@@ -15,7 +15,7 @@
 	<!-- <h1>{{ response }}</h1> -->
 	<!-- <h1> {{ pond_id }} </h1> -->
 	
-	<button id="refresh"> Refresh </button>
+	<button id="refresh" onclick="refresh()"> Refresh </button>
 	
 	<div class="container">
 		<h1 class="display-2 head_title"> {{ response.channel.name }} </h1>
@@ -31,6 +31,11 @@
 	<div class="category">
 		<h3> Water Level </h3>
 		<input type="text" id="water_level" readonly value="{{ response.feeds.0.field4 }}">
+		{% if response.feeds.0.field4 == 0 %}
+			<h3> 00000 </h3>
+		{% elif response.feeds.0.field4 == 1 %}
+			<h3>1111111111</h3>
+		{% endif %}
 	</div>
 	<h2>NB:</h2><br>
 	<h4>Water Level: 0 = Full</h4> <br>
